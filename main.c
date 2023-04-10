@@ -481,7 +481,7 @@ int main()
     fflush(stdin);
 
      int pilihan;
-    char a=170,b=219;
+    char a=170,b=219, str[]="54321";;
     printf("\n\n\n\n\n\n\n");
     printf("\n\n\n\t\t\t\t\tLoading...");
     printf("\n\n");
@@ -512,186 +512,146 @@ int main()
             printf("=");Sleep(10);
         }
         printf(" | LOGIN KE TOKO KLONTONG KAMI | ");
-
-        for(int i=0; i<51; i++)
-        {
-            printf("=");Sleep(10);
-        }
-        printf("\n");
-         for(int i=0; i<120; i++)
-        {
-            printf("_");Sleep(10);
-        }
-        printf("\n\n");
-        printf(" Username: ");
-        scanf ( "%s", &nama);
-        printf(" Password: ");
-        scanf("%s", &psw);
-
-        if ((strcmp(nama,"admin")==0)&&(strcmp(psw,"1234")==0))
-        {
-            break;
-        } else
-        {
-            printf("\n Password atau username yang anda masukan salah.");
-            ulang = ulang + 1;
-            Sleep(2000);
-        }
-        system ("cls");
     }
 
-    if(ulang<3)
-    {
-        printf("\n Anda berhasil login");
-     {system ("cls"); goto menu;}
+    char user[5]="tugas",pass[8]="kematian",word[8],name[5];
+    int i,j,k,l,p,input,cek,nilai,salah;
+    p=0;
+    salah=0;
+    awal:
+    system("cls");
+    printf("\n\n\n\n\n\n\n\n");
+    printf("\t\t\t\t\t");
+    printf("--SELAMAT DATANG!--\n");
+    printf("\n\t\t\t\t\t");
+    printf("USERNAME  : ");
+    scanf("%s",&name);
+    cek=0;
+    for(i=0;i<5;i++){
+        if(name[i]==user[i]){
+            cek=cek+1;
+        }else{
+            cek=0;
+        }
+    }
+    printf("\n\t\t\t\t\t");
+    printf("PASSWORD  : ");
+    for(i=0;i<8;i++){
+        input=getch();
+        if(input==13){
+            goto cek;
+        }else{
+            word[i]=input;
+            printf("*");
+        }
+    }
+    nilai=0;
+    for(i=0;i<8;i++){
+        if(pass[i]==word[i]){
+            nilai=nilai+1;
+        }else{
+            nilai=0;
+        }
+    }
+    getch();
+    cek:
+    if(cek==5&&nilai==8){
+        printf("\n\n\t\t\t\t  ");
+        printf("Selamat datang di Tugas Kematian");
+        printf("\n\n\t\t\t\t       ");
+        printf("Klik ENTER untuk lanjut");
+        getch();
+        system("cls");
+        return home();
+    }else{
+        if(cek==5){
+            printf("\n\n\t\t\t\t\t   ");
+            printf("Password salah");
+            goto bawah;
+        }else if(nilai==8){
+            printf("\n\n\t\t\t\t\t   ");
+            printf("Username salah");
+            goto bawah;
+        }else{
+            printf("\n\n\t\t\t\t     ");
+            printf("Username dan Password salah");
+            goto bawah;
+        }
+    }
+    bawah:
+    salah=salah+1;
+    if(salah==3){
+        printf("\n\n\t\t  ");
+        printf("Anda telah salah menginput username dan password sebanyak 3 kali\n");
+        printf("\n\t\t\t\t\tAnda akan keluar dalam ");
+        for( i =1 ; i<= 5; i++ ) {
+            gotoxy(51, 20);
+            printf("%c", str[p++]);
+            Sleep(1000);
+            if(p == strlen(str))
+            p = 0;
+        }
+        system("cls");
+        return 0;
+    }else{
+        printf("\n\n\t\t\t\t     ");
+        printf("Klik ENTER untuk mengulangi");
+        printf("\n\n\t\t\t\t  ");
+        printf(" Anda terlalu banyak membuat kesalahan, Anda bisa ngopi dulu kemudian merenungkan kesalahan Anda,\nlalu setelah itu Anda bisa mencoba login kembali.",3-salah);
+        getch();
+        goto awal;
     }
 
-    else
-    {
-        printf("\n Anda terlalu banyak membuat kesalahan, Anda bisa ngopi dulu kemudian merenungkan kesalahan Anda,\nlalu setelah itu Anda bisa mencoba login kembali.");
-    }
-    printf("\n-----------------------------------\n\n");return 0;
+    return 0;
+}
 
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////v-tabel pembuka
+int home(){
 
+    int pilihan;
     menu:
 //////////////////////////////////////////////////v-garis pembuka
 
-            system("cls");
-    gotoxy(15, 3);
-    printf("==============================================================\n");
-    gotoxy(25, 5);
-    printf("                   SELAMAT DATANG DALAM PROGRAM              \n");
-    gotoxy(15, 9);
-    printf("==========================================\n");
-    gotoxy(53, 7);
-    printf("DATABASE KELOMPOK KAMI.\n\n");
-    gotoxy(35, 9);
-    printf("==========================================\n");
-    gotoxy(35, 10);
-    printf("                   PESAN              \n");
-    gotoxy(35, 12);
-    printf("==========================================\n");
-    gotoxy(35, 14);
-    printf("kak tolong kalo ada tts ga usah lagi \n\t\t\t\t kasih pilihan mau live coding apa di rumah.\n\t\t\t\tlangsung di rumah aja T_T.. pokoknya thank uuuu\n\n");
-          /*printf("\n\n");
-          printf( "\t\t\t");
-        printf("|");
-         for(int i=0; i<51; i++)
-        {
-            printf("=");Sleep(10);
-        }
-        printf("|");printf("\n");
-//////////////////////////////////////////////////v-spasi satu
-          printf( "\t\t\t");printf("|");
-         for(int i=0; i<51; i++)
-        {
-            printf(" ");Sleep(10);
-        }
-        printf("|");printf("\n");
-//////////////////////////////////////////////////v-spasi tulisan satu
-        printf( "\t\t\t");printf("|");
-        for(int i=0; i<12; i++)
-        {
-            printf(" ");Sleep(10);
-        }
-        printf(" SELAMAT DATANG DALAM PROGRAM");
- //////////////////////////////////////////////////v-spasi tulisan dua
-         for(int i=0; i<11; i++)
-        {
-            printf(" ");Sleep(10);
-        } printf("|");printf("\n");
- //////////////////////////////////////////////////v-spasi tulisan satu
-         printf( "\t\t\t");printf("|");
-        for(int i=0; i<7; i++)
-        {
-            printf(" ");Sleep(10);
-        }
-        printf(" DATABASE TOKO KLONTONG KAMI");
-         for(int i=0; i<6; i++)
-        {
-            printf(" ");Sleep(10);
-        } printf("|");printf("\n");
-//////////////////////////////////////////////////v-spasi tulisan dua
-         printf( "\t\t\t");printf("|");
-         for(int i=0; i<51; i++)
-        {
-            printf(" ");Sleep(10);
-        }
-        printf("|");printf("\n");
-//////////////////////////////////////////////////v-garis pembatas tengah
-       printf( "\t\t\t");printf("|");
-         for(int i=0; i<51; i++)
-        {
-            printf("-");Sleep(10);
-        }
-        printf("|");printf("\n");
-//////////////////////////////////////////////////v-spasi satu
-        printf( "\t\t\t");printf("|");
-         for(int i=0; i<51; i++)
-        {
-            printf(" ");Sleep(10);
-        }
-        printf("|");printf("\n");
-//////////////////////////////////////////////////v-spasi tulisan satu
-         printf( "\t\t\t");
-        for(int i=0; i<15; i++)
-        {
-            printf(" ");Sleep(10);
-        }
-////////////////////////////////////////////////////////////////////////////////////v-waktu
-        time_t mytime;
-		mytime = time(NULL);
-		printf(ctime(&mytime));
+    system("cls");
+    gotoxy(6, 0);
+    printf("|=====================================================================|\n");
+    gotoxy(6, 2);
+    printf("|===                   SELAMAT DATANG DALAM PROGRAM                ===|\n");
+    gotoxy(6, 4);
+    printf("|=====================================================================|\n");
+    gotoxy(25, 6);
+    printf("|DATABASE KELOMPOK KAMI.|\n\n");
+    gotoxy(6, 7);
+    printf("=====================================================================|\n");
+    gotoxy(25, 9);
+    printf("                   SILAHKAN MEMBUAT PESANAN              \n");
+    gotoxy(6, 10);
+    printf("=====================================================================|\n\n\n\n\n");
 
-//////////////////////////////////////////////////v-spasi dua
-         printf( "\t\t\t");printf("|");
-         for(int i=0; i<51; i++)
-        {
-            printf(" ");Sleep(10);
-        }
-        printf("|");printf("\n");
-//////////////////////////////////////////////////v-garis penutup
-        printf( "\t\t\t");
-        printf("|");
-         for(int i=0; i<51; i++)
-        {
-            printf("-");Sleep(10);
-        }
-        printf("|");printf("\n");
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////v-menu utama
-
-        printf( "\t\t\t");printf("|");
-         for(int i=0; i<51; i++)
-        {
-            printf(" ");Sleep(10);
-        }
-        */
-        printf("|");printf("\n");
 
         do {
-        letak (6,9);
+        letak (6,12);
         printf("= Menu Utama =");
-        letak (6,11);
-        printf("1. Tambah Data Buku");
-        letak (6, 12);
-        printf("2. Lihat Data Buku");
         letak (6,13);
+        printf("1. Tambah Data Buku");
+        letak (6, 14);
+        printf("2. Lihat Data Buku");
+        letak (6,15);
         printf("3. Urutkan Data Buku");
-        letak (6,14);
+        letak (6,16);
         printf("4. Pencarian Data Buku");
-        letak (6, 15);
-        printf("5. Hapus Data Buku");
-        letak(6,16);
-        printf("6. Ubah Data Buku");
         letak (6, 17);
+        printf("5. Hapus Data Buku");
+        letak(6,18);
+        printf("6. Ubah Data Buku");
+        letak (6, 19);
         printf("7. Lihat Riwayat Perubahan");
-        letak (6,18);
+        letak (6,20);
         printf("8. Exit");
-        letak (6,19);
+        letak (6,21);
         printf("Masukkan Pilihan Anda : "); scanf("%d", &pilihan);
 
         switch(pilihan) {
@@ -709,3 +669,5 @@ int main()
 
     return 0;
 }
+
+
