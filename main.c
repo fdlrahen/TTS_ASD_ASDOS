@@ -276,142 +276,129 @@ void lihat() {
         }
     }
     letak(26,35);
-    printf("/n/n Tekan Enter Untuk Kembali ke Menu"); getch();
+    printf("\n\n Tekan Enter Untuk Kembali ke Menu"); getch();
 }
 // 8
 
 void urut() {
-    int j=0;
-    for (int i = 0; i < tot -1; j++) {
-        for (int j = 0; j < tot -i -1; j++) {
-            if (dat[j].id > dat[j+1].id) {
-                temp = dat[j].id;
-                dat[j].id = dat[j+1].id;
-                dat[j+1].id = temp;
+    int temp;
+    char temps[30];
+    for (int i = 0; i < tot -1; i++) {
+    for (int j = 0; j < tot -i -1; j++) {
+    if (dat[j].id > dat[j+1].id) {
+        temp = dat[j].id;
+        dat[j].id = dat[j+1].id;
+        dat[j+1].id = temp;
 
-                strcpy(temps, dat[j].nama);
-                strcpy(dat[j].nama, dat[j+1].nama);
-                strcpy(dat[j+1].nama, temps);
+            strcpy(temps, dat[j].nama);
+            strcpy(dat[j].nama, dat[j+1].nama);
+            strcpy(dat[j+1].nama, temps);
 
-                strcpy(temps, dat[j].telp);
-                strcpy(dat[j].telp, dat[j+1].telp);
-                strcpy(dat[j+1].telp, temps);
+            strcpy(temps, dat[j].tanggal);
+            strcpy(dat[j].tanggal, dat[j+1].tanggal);
+            strcpy(dat[j+1].tanggal, temps);
 
-                strcpy(temps, dat[j].tanggal);
-                strcpy(dat[j].tanggal, dat[j+1].tanggal);
-                strcpy(dat[j+1].tanggal, temps);
+            strcpy(temps, dat[j].harga);
+            strcpy(dat[j].harga, dat[j+1].harga);
+            strcpy(dat[j+1].harga, temps);
 
-                strcpy(temps, dat[j].harga);
-                strcpy(dat[j].harga, dat[j+1].harga);
-                strcpy(dat[j+1].harga, temps);
-            }
+            strcpy(temps, dat[j].telp);
+            strcpy(dat[j].telp, dat[j+1].telp);
+            strcpy(dat[j+1].telp, temps);
         }
     }
-
-// 9
-
-    for(int i = 0; i < tot; i++) {
-        if(i == 0 || i% 3 == 0 ) {
-            system("cls");
-            Tampilan_Tetap();
-            letak(26,13);
-            printf(" ===== Daftar Data Buku ===== \n\n");
-            letak(26,15);
-            printf(" Data ke %d", i+1);
-            letak(26,16);
-            printf(" Tanggal Input      :%s", dat[i].tanggal);
-            letak(26,17);
-            printf(" Judul Buku         :%s", dat[i].nama);
-            letak(26,18);
-            printf(" Nomor ID Buku      :%s", dat[i].id);
-            letak(26,19);
-            printf(" Penerbit           :%s", dat[i].harga);
-        }else if(i==1 || i==4 || i==7 || i==10 || i==13) {
-            letak(26,21);
-            printf(" Data ke %d", i+1);
-            letak(26,22);
-            printf(" Tanggal Input      :%s", dat[i].tanggal);
-            letak(26,23);
-            printf(" Judul Buku         :%s", dat[i].nama);
-            letak(26,24);
-            printf(" Nomor ID Buku      :%s", dat[i].id);
-            letak(26,25);
-            printf(" Penerbit           :%s", dat[i].harga);
-// 7
-        }else {
-            letak(26,27);
-            printf(" Data ke %d", i+1);
-            letak(26,28);
-            printf(" Tanggal Input      :%s", dat[i].tanggal);
-            letak(26,29);
-            printf(" Judul Buku         :%s", dat[i].nama);
-            letak(26,30);
-            printf(" Nomor ID Buku      :%s", dat[i].id);
-            letak(26,31);
-            printf(" Penerbit           :%s", dat[i].harga);
-            getch();
-        }
-    }
-    letak (26,33);
-    strcpy (temps, " ADMIN mengurutkan data buku");
-    append (&head, temps);
-
-    letak (26,34);
-    printf(" `Tekan Enter Untuk Kembali ke Menu");
+}
+printf("Data berhasil diurutkan berdasarkan ID Buku\n");
+system("pause");
+system("cls");
 }
 
 //11
 void cari(){
+    int oy;
     letak(26,13);
     printf("==Pencarian Data Buku==");
     letak (26,15);
-    printf("Masukkan Nomor ID Buku: "); scanf("%d", &oy);
-    result = 0;
-    Mencari ();
-    for (x=0; x <= tot; x++) {
+    printf("Masukkan Nomor ID Buku: ");
+    scanf("%d", &oy);
+
+    int result = 0, x;
+    for (x=0; x < tot; x++) {
         if (oy == dat[x].id){
             result = 1;
             break;
         }
     }
+
     if (result == 1){
         letak (26,17);
         printf("~ Data Ditemukan ");
         letak (26,19);
-        printf("Tanggal input : %s", dat [x].tanggal);
+        printf("Tanggal input : %s", dat[x].tanggal);
         letak (26,20);
-        printf("Judul Buku : %s", dat [x].nama);
+        printf("Judul Buku : %s", dat[x].nama);
         letak (26,21);
-        printf("Nomor ID Buku : %d", dat [x].id);
+        printf("Nomor ID Buku : %d", dat[x].id);
         letak (26,22);
-        printf("Penerbit: %s", dat [x].harga);
+        printf("Penerbit: %s", dat[x].harga);
     }
     else{
         letak (26,24);
         printf("~ Data Tidak Ditemukan ~");
     }
 
-    letak (26,24);
-    snprintf(temps, sizeof(temps), "ADMIN mencari data Buku No. %d", oy);
-    append(&head, temps);
     letak (26,25);
-    printf("Tekan Enter Untuk Kembali ke Menu"); getch();
+    printf("Tekan Enter Untuk Kembali ke Menu");
+    getch();
 }
 
-void hapus () {
+void hapus() {
     char jawab, search[30];
     letak(26,13);
     printf("=== Hapus Data Buku ===");
     letak(26,15);
-    printf("Masukkan Nomor ID Buku : "); scanf("%d", &oy);
-    Mencari ();
+    printf("Masukkan Nomor ID Buku : ");
+    scanf("%d", &oy);
+    Mencari();
     result = 0;
-    for ( x = 0; x <= tot; x++) {
-            if (oy == dat [x].id) {
-                result = 1;
-                break;
-            }
+    for (x = 0; x <= tot; x++) {
+        if (oy == dat[x].id) {
+            result = 1;
+            break;
+        }
     }
+
+    if (result == 1) {
+        letak(26,17);
+        printf("Data buku berikut akan dihapus :");
+        letak(26,19);
+        printf("Tanggal input : %s", dat[x].tanggal);
+        letak(26,20);
+        printf("Judul Buku : %s", dat[x].nama);
+        letak(26,21);
+        printf("Nomor ID Buku : %d", dat[x].id);
+        letak(26,22);
+        printf("Penerbit : %s", dat[x].harga);
+
+        snprintf(temps, sizeof(temps), " ADMIN menghapus data Buku No. %d", dat[x].id);
+        append(&head, temps);
+
+        for (int i = x; i < tot - 1; i++) {
+            strcpy(dat[i].nama, dat[i + 1].nama);
+            dat[i].id = dat[i + 1].id;
+            strcpy(dat[i].telp, dat[i + 1].telp);
+            strcpy(dat[i].tanggal, dat[i + 1].tanggal);
+            strcpy(dat[i].harga, dat[i + 1].harga);
+        }
+        tot--;
+    } else {
+        letak(26,24);
+        printf("~ Data Tidak Ditemukan ");
+    }
+    letak(26,25);
+    printf("Tekan Enter Untuk Kembali ke Menu");
+    getch();
+}
 
     if (result == 1) {
         letak (26,17);
@@ -447,98 +434,104 @@ void hapus () {
 }
 
 //14
-void edit () {
-    char stemp [30], search [30];
-    int jaw= 0;
+void edit() {
+    char stemp[30], search[30], temps[100];
+    int jaw = 0;
 
-    letak (26,13);
+    letak(26, 13);
     printf("=== Ubah Data Buku ===");
-    letak (26,15);
-    printf("Masukkan Nomor ID Buku: "); scanf("%d", &oy);
-    Mencari ();
+    letak(26, 15);
+    printf("Masukkan Nomor ID Buku: ");
+    scanf("%d", &oy);
+
+    Mencari();
+
     result = 0;
-    for ( x = 0; x <= tot; x++) {
-        if (oy == dat [x].id) {
+    for (x = 0; x <= tot; x++) {
+        if (oy == dat[x].id) {
             result = 1;
             break;
         }
     }
 
     if (result == 1) {
-        letak (26,17);
+        letak(26, 17);
         printf("Data Buku berikut akan Diubah :");
-        letak (26,19);
-        printf("Tanggal input   : %s", dat [x].tanggal);
-        letak (26,20);
-        printf("Judul Buku      : %s", dat [x].nama);
-        letak (26,21);
-        printf("Nomor ID Buku   : %d", dat [x].id);
-        letak (26,22);
-        printf("Penerbit        : %s", dat [x].harga);
+        letak(26, 19);
+        printf("Tanggal input   : %s", dat[x].tanggal);
+        letak(26, 20);
+        printf("Judul Buku      : %s", dat[x].nama);
+        letak(26, 21);
+        printf("Nomor ID Buku   : %d", dat[x].id);
+        letak(26, 22);
+        printf("Penerbit        : %s", dat[x].harga);
 
-        letak (26,24);
+        letak(26, 24);
         printf("Pilih Data yang akan diganti");
-        letak (26,26);
+        letak(26, 26);
         printf("1. Tanggal input");
-        letak (26,27);
+        letak(26, 27);
         printf("2. Judul Buku");
-        letak (26,28);
+        letak(26, 28);
         printf("3. Nomor ID Buku");
-        letak (26,29);
+        letak(26, 29);
         printf("4. Penerbit");
-        letak (26,30);
+        letak(26, 30);
         printf("5. Selesai / Batal");
-        letak (26,32);
-        printf("Pilihan : "); scanf("%d", &jaw);
+        letak(26, 32);
+        printf("Pilihan : ");
+        scanf("%d", &jaw);
 
         switch (jaw) {
-            case 1: letak (26,19); printf(" Tanggal Input Baru: "); scanf("%[^\n]*c", &stemp);
-            strcpy (search, dat [x]. tanggal);
-            strcpy (dat [x].tanggal, stemp);
-            snprintf(temps, sizeof(temps), " ADMIN mengubah tanggal input buku No. %d dari %s menjadi %s", dat [x].id, search, dat [x]. tanggal);
-            append(&head, temps);
-            break;
+            case 1:
+                letak(26, 19);
+                printf(" Tanggal Input Baru: ");
+                scanf(" %[^\n]s", stemp);
+                strcpy(search, dat[x].tanggal);
+                strcpy(dat[x].tanggal, stemp);
+                snprintf(temps, sizeof(temps), " ADMIN mengubah tanggal input buku No. %d dari %s menjadi %s", dat[x].id, search, dat[x].tanggal);
+                append(&head, temps);
+                break;
 
-            case 2: letak (26,21); printf(" Judul Baru "); scanf(" %[^\n]*c", &stemp);
-            strcpy (search, dat [x].nama);
-            strcpy(dat [x].nama, stemp);
-            snprintf(temps, sizeof(temps), " ADMIN mengubah judul buku No. %d dari %s menjadi %s", dat [x].id, search, dat [x].nama); append(head, temps);
-            break;
+            case 2:
+                letak(26, 21);
+                printf(" Judul Baru: ");
+                scanf(" %[^\n]s", stemp);
+                strcpy(search, dat[x].nama);
+                strcpy(dat[x].nama, stemp);
+                snprintf(temps, sizeof(temps), " ADMIN mengubah judul buku No. %d dari %s menjadi %s", dat[x].id, search, dat[x].nama);
+                append(&head, temps);
+                break;
 
-            case 3: letak (26,23); printf(" Nomor ID Buku: "); scanf("%d", &temp);
-            jaw = dat [x]. id;
-            dat [x].id = temp;
-            snprintf(temps, sizeof(temps), " ADMIN mengubah Nomor ID buku No. %d dari %d menjadi %d", dat [x].id, jaw, dat [x].id);
-            append(&head, temps);
-            break;
+            case 3:
+                letak(26, 23);
+                printf(" Nomor ID Buku Baru: ");
+                scanf("%d", &temp);
+                jaw = dat[x].id;
+                dat[x].id = temp;
+                snprintf(temps, sizeof(temps), " ADMIN mengubah Nomor ID buku No. %d dari %d menjadi %d", jaw, jaw, dat[x].id);
+                append(&head, temps);
+                break;
 
-            case 4:
-            letak (26,25); printf(" Penerbit Baru: "); scanf("%[^\n]*c", stemp);
-            strcpy(search, dat[x].harga);
-            strcpy(dat[x].harga, stemp);
-            snprintf(temps, sizeof(temps), " ADMIN mengubah Penerbit buku No. %d dari %s menjadi %s", dat[x].id, search, dat[x].harga);
-            append(&head, temps);
-            break;
+        case 4:
+        letak(26, 25);
+        printf(" Penerbit Baru: ");
+        scanf(" %[^\n]s", stemp);
+        strcpy(search, dat[x].harga);
+        strcpy(dat[x].harga, stemp);
+        snprintf(temps, sizeof(temps), " ADMIN mengubah penerbit buku No. %d dari %s menjadi %s", dat[x].id, search, dat[x].harga);
+        append(&head, temps);
+        break;
 
-            case 5:break;
+        case 5:
+        return;
 
-            default: letak (26,27); printf("Pilihan Tidak Tersedia"); break;
-            }
-    }
-    else{
-            letak (26,34);
-            printf(" Data Tidak Ditemukan ");
+        default:
+        letak(26, 34);
+        printf("Pilihan tidak tersedia!");
+        break;
         }
-        letak (26,37);
-            printf("Tekan Enter Untuk Kembali ke Menu");
-            getch();
-}
-
-//17
-void riwayat () {
-     system("cls");
-     printf("\n printlist (head); Riwayat Perubahan Data Buku =====\n\n");
-     printf("\n\n Tekan Enter Untuk Kembali ke Menu"); getch();
+    }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int main()
@@ -720,9 +713,7 @@ int home(){
         letak(9,18);
         printf("6. Ubah Data Buku");
         letak (9, 19);
-        printf("7. Lihat Riwayat Perubahan");
-        letak (9,20);
-        printf("8. Exit");
+        printf("7. Exit");
         letak (8,21);
         printf("= Masukkan Pilihan Anda : "); scanf("%d", &pilihan);
         system("cls");
@@ -735,11 +726,10 @@ int home(){
             case 4: cari(); break;
             case 5: hapus(); break;
             case 6: edit(); break;
-            case 7: riwayat(); break;
-            case 8: return 0;
+            case 7: return 0;
             default: letak(6,21); printf("Pilihan Tidak Tersedia");getch();
         }
-    } while(pilihan != 8);
+    } while(pilihan != 7);
 
     return 0;
 }
