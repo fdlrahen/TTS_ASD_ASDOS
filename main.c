@@ -179,52 +179,56 @@ void printlist(struct node *node){
 
 // 4
 void tambah(){
+        FILE *file = fopen("data_barang.txt", "a");
+    if (file == NULL) {
+    printf("Gagal membuka file\n");
+    return;
+    }
 
+    letak(26,13);
+printf(" ===== Tambah Data Buku ===== ");
+letak(26,14);
+printf(" Masukan Jumlah Data Buku Yang Dimasukan (max = 15): "); scanf("%d", &jum);
+
+for(int i = 0; i < jum; i++) {
+    system("cls");
+    Tampilan_Tetap();
     letak(26,13);
     printf(" ===== Tambah Data Buku ===== ");
     letak(26,14);
-    printf(" Masukan Jumlah Data Buku Yang Dimasukan (max = 15): "); scanf("%d", &jum);
+    printf(" Masukan Jumlah Data Buku Yang Dimasukan (max = 15): %d", jum);
 
-    for(int i = 0; i < jum; i++) {
-        system("cls");
-        Tampilan_Tetap();
-        letak(26,13);
-        printf(" ===== Tambah Data Buku ===== ");
-        letak(26,14);
-        printf(" Masukan Jumlah Data Buku Yang Dimasukan (max = 15): %d", jum);
+    letak(26,16);
+    printf(" Data ke %d", i+1);
+    letak(26,17);
+    printf(" Tanggal       : ");
+    letak(26,18);
+    printf(" Judul Buku    : ");
+    letak(26,19);
+    printf(" ID Buku       : ");
+    letak(26,20);
+    printf(" Penerbit      : ");
 
-        letak(26,16);
-        printf(" Data ke %d", i+1);
-        letak(26,17);
-        printf(" Tanggal       : ");
-        letak(26,18);
-        printf(" Judul Buku    : ");
-        letak(26,19);
-        printf(" ID Buku       : ");
-        letak(26,20);
-        printf(" Penerbit      : ");
-
-        letak(43,17);
-        scanf(" %[^\n]%*c", &dat[i+tot].tanggal);
-        letak(43,18);
-        scanf(" %[^\n]%*c", &dat[i+tot].nama);
-        letak(43,19);
-        scanf(" %d", &dat[i+tot].id);
-        letak(43,20);
-        scanf(" %[^\n]%*c", &dat[i+tot].harga);
+    letak(43,17);
+    scanf(" %[^\n]%*c", &dat[i+tot].tanggal);
+    letak(43,18);
+    scanf(" %[^\n]%*c", &dat[i+tot].nama);
+    letak(43,19);
+    scanf(" %d", &dat[i+tot].id);
+    letak(43,20);
+    scanf(" %[^\n]%*c", &dat[i+tot].harga);
+    // tulis data ke file
+    fprintf(file, "%s %s %d %s\n", dat[i+tot].tanggal, dat[i+tot].nama, dat[i+tot].id, dat[i+tot].harga);
     }
-// 5
-    snprintf(temps, sizeof(temps), " ADMIN menambahkan %d data buku", jum);
-    append(&head, temps);
     tot += jum;
-    letak(26,22);
-    printf(" ===== NOTIFIKASI ===== ");
-    letak(26,23);
-    printf(" %d Data Buku Berhasil Ditambahkan", tot);
-    letak(26,24);
-    printf(" Tekan Enter Untuk Kembali ke Menu"); getch();
+
+    fclose(file);
+    printf("Data berhasil ditambahkan\n");
+    system("pause");
+    system("cls");
 
 }
+
 
 // 6
 
@@ -242,7 +246,7 @@ void lihat() {
             letak(26,17);
             printf(" Judul Buku         :%s", dat[i].nama);
             letak(26,18);
-            printf(" Nomor ID Buku      :%s", dat[i].id);
+            printf(" Nomor ID Buku      :%d", dat[i].id);
             letak(26,19);
             printf(" Penerbit           :%s", dat[i].harga);
         }else if(i==1 || i==4 || i==7 || i==10 || i==13) {
@@ -253,7 +257,7 @@ void lihat() {
             letak(26,23);
             printf(" Judul Buku         :%s", dat[i].nama);
             letak(26,24);
-            printf(" Nomor ID Buku      :%s", dat[i].id);
+            printf(" Nomor ID Buku      :%d", dat[i].id);
             letak(26,25);
             printf(" Penerbit           :%s", dat[i].harga);
 // 7
@@ -265,16 +269,15 @@ void lihat() {
             letak(26,29);
             printf(" Judul Buku         :%s", dat[i].nama);
             letak(26,30);
-            printf(" Nomor ID Buku      :%s", dat[i].id);
+            printf(" Nomor ID Buku      :%d", dat[i].id);
             letak(26,31);
             printf(" Penerbit           :%s", dat[i].harga);
             getch();
         }
     }
-    letak(26,33);
-    printf(" Tekan Enter Untuk Kembali ke Menu"); getch();
+    letak(26,35);
+    printf("/n/n Tekan Enter Untuk Kembali ke Menu"); getch();
 }
-
 // 8
 
 void urut() {
