@@ -1,16 +1,9 @@
 // 1
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <windows.h>
-#include <conio.h>
-COORD coord={0,0};
-
-void SetColor(unsigned short);
-void SetColor(unsigned short color) {
-    HANDLE hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(hConsoleOutput,color);
-}
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <string.h>
+    #include <windows.h>
+    #include <conio.h>
 
 struct data {
     int id;
@@ -40,30 +33,47 @@ void Mencari();
         SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),CRD);
     }
 
-void Tampilan_Tetap() {
-//v-garis pembuka
-          printf("\n\n");
+void sama() {
           printf( "\t\t\t");
-        printf("|");
+        printf("+");
          for(int i=0; i<51; i++)
         {
             printf("=");Sleep(1);
         }
-        printf("|");printf("\n");
-//v-spasi satu
-          printf( "\t\t\t");printf("|");
+        printf("+");printf("\n");
+}
+
+void kosong() {
+        printf( "\t\t\t");printf("|");
          for(int i=0; i<51; i++)
         {
             printf(" ");Sleep(0);
         }
         printf("|");printf("\n");
+}
+
+void garis() {
+        printf( "\t\t\t");
+        printf("|");
+         for(int i=0; i<51; i++)
+        {
+            printf("-");Sleep(1);
+        }
+        printf("|");printf("\n");
+}
+
+void Tampilan_Tetap() {
+
+    printf("\n\n");
+    sama();
+    kosong();
 //v-spasi tulisan satu
         printf( "\t\t\t");printf("|");
         for(int i=0; i<12; i++)
         {
             printf(" ");Sleep(1);
         }
-        printf("SELAMAT DATANG DALAM PROGRAM");
+        printf("\033[1;34mSelamat Datang Dalam Program\033[0m");
  //v-spasi tulisan dua
          for(int i=0; i<11; i++)
         {
@@ -75,43 +85,28 @@ void Tampilan_Tetap() {
         {
             printf(" ");Sleep(1);
         }
-        printf("     DATABASE TOKO KLONTONG KAMI      ");
+        printf("\033[1;34m     Database Toko Klontong kami      \033[0m");
          for(int i=0; i<6; i++)
         {
             printf(" ");Sleep(1);
         } printf("|");printf("\n");
-//v-spasi tulisan dua
-         printf( "\t\t\t");printf("|");
-         for(int i=0; i<51; i++)
-        {
-            printf(" ");Sleep(0);
-        }
-        printf("|");printf("\n");
-//v-garis pembatas tengah
-       printf( "\t\t\t");printf("|");
-         for(int i=0; i<51; i++)
-        {
-            printf("-");Sleep(1);
-        }
-        printf("|");printf("\n");
-//v-spasi satu
-        printf( "\t\t\t");printf("|");
-         for(int i=0; i<51; i++)
-        {
-            printf(" ");Sleep(0);
-        }
-        printf("|");printf("\n");
-//v-spasi tulisan satu
+
+    kosong();
+    garis();
+    kosong();
+
          printf( "\t\t\t");
         for(int i=0; i<15; i++)
         {
             printf(" ");Sleep(1);
         }
 //v-waktu
+
+        printf("\033[1;32m");
         time_t mytime;
 		mytime = time(NULL);
 		printf(ctime(&mytime));
-
+        printf("\033[0m");
 //v-spasi dua
          printf( "\t\t\t");printf("|");
          for(int i=0; i<51; i++)
@@ -120,20 +115,11 @@ void Tampilan_Tetap() {
         }
         printf("|");printf("\n");
 //v-garis penutup
-        printf( "\t\t\t");
-        printf("|");
-         for(int i=0; i<51; i++)
-        {
-            printf("-");Sleep(1);
-        }
-        printf("|");printf("\n");
-//v-menu utama
-        printf( "\t\t\t");printf("|");
-         for(int i=0; i<51; i++)
-        {
-            printf(" ");Sleep(0);
-        }
-        printf("|");printf("\n");
+
+    garis();
+    kosong();kosong();kosong();kosong();kosong();kosong();kosong();kosong();kosong();kosong();kosong();
+    kosong();kosong();kosong();kosong();
+
 }
 
 void Mencari(){
@@ -184,50 +170,50 @@ void tambah(){
     printf("Gagal membuka file\n");
     return;
     }
-
-    letak(26,13);
-printf(" ===== Tambah Data Buku ===== ");
-letak(26,14);
-printf(" Masukan Jumlah Data Buku Yang Dimasukan (max = 15): "); scanf("%d", &jum);
-
-for(int i = 0; i < jum; i++) {
-    system("cls");
     Tampilan_Tetap();
     letak(26,13);
-    printf(" ===== Tambah Data Buku ===== ");
+    printf(" --- Tambah Data Buku --- ");
     letak(26,14);
-    printf(" Masukan Jumlah Data Buku Yang Dimasukan (max = 15): %d", jum);
+    printf(" Masukan Jumlah Data Buku Yang Dimasukan : "); scanf("%d", &jum);
 
-    letak(26,16);
-    printf(" Data ke %d", i+1);
-    letak(26,17);
-    printf(" Tanggal       : ");
-    letak(26,18);
-    printf(" Judul Buku    : ");
-    letak(26,19);
-    printf(" ID Buku       : ");
-    letak(26,20);
-    printf(" Penerbit      : ");
+    for(int i = 0; i < jum; i++) {
+        system("cls");
+        Tampilan_Tetap();
+        letak(26,13);
+        printf(" --- Tambah Data Buku --- ");
+        letak(26,14);
+        printf(" Masukan Jumlah Data Buku Yang Dimasukan : %d", jum);
 
-    letak(43,17);
-    scanf(" %[^\n]%*c", &dat[i+tot].tanggal);
-    letak(43,18);
-    scanf(" %[^\n]%*c", &dat[i+tot].nama);
-    letak(43,19);
-    scanf(" %d", &dat[i+tot].id);
-    letak(43,20);
-    scanf(" %[^\n]%*c", &dat[i+tot].harga);
-    // tulis data ke file
-    fprintf(file, "%s %s %d %s\n", dat[i+tot].tanggal, dat[i+tot].nama, dat[i+tot].id, dat[i+tot].harga);
+        letak(26,16);
+        printf(" Data ke %d", i+1);
+        letak(26,17);
+        printf(" Tanggal       : ");
+        letak(26,18);
+        printf(" Judul Buku    : ");
+        letak(26,19);
+        printf(" ID Buku       : ");
+        letak(26,20);
+        printf(" Penerbit      : ");
+
+        letak(43,17);
+        scanf(" %[^\n]%*c", &dat[i+tot].tanggal);
+        letak(43,18);
+        scanf(" %[^\n]%*c", &dat[i+tot].nama);
+        letak(43,19);
+        scanf(" %d", &dat[i+tot].id);
+        letak(43,20);
+        scanf(" %[^\n]%*c", &dat[i+tot].harga);
+        // tulis data ke file
+        fprintf(file, "%s %s %d %s\n", dat[i+tot].tanggal, dat[i+tot].nama, dat[i+tot].id, dat[i+tot].harga);
+        }
+        tot += jum;
+
+        fclose(file);
+        printf("\t\t\t Data berhasil ditambahkan\n");
+        system("pause");
+        system("cls");
+
     }
-    tot += jum;
-
-    fclose(file);
-    printf("Data berhasil ditambahkan\n");
-    system("pause");
-    system("cls");
-
-}
 
 
 // 6
@@ -238,7 +224,7 @@ void lihat() {
             system("cls");
             Tampilan_Tetap();
             letak(26,13);
-            printf(" ===== Daftar Data Buku ===== \n\n");
+            printf(" --- Daftar Data Buku --- \n\n");
             letak(26,15);
             printf(" Data ke %d", i+1);
             letak(26,16);
@@ -276,13 +262,16 @@ void lihat() {
         }
     }
     letak(26,35);
-    printf("\n\n Tekan Enter Untuk Kembali ke Menu"); getch();
+    printf("\n\n\t\t\t Tekan Enter Untuk Kembali ke Menu"); getch();
 }
+
+
 // 8
 
 void urut() {
     int temp;
     char temps[30];
+    Tampilan_Tetap();
     for (int i = 0; i < tot -1; i++) {
     for (int j = 0; j < tot -i -1; j++) {
     if (dat[j].id > dat[j+1].id) {
@@ -316,6 +305,7 @@ system("cls");
 //11
 void cari(){
     int oy;
+    Tampilan_Tetap();
     letak(26,13);
     printf("==Pencarian Data Buku==");
     letak (26,15);
@@ -344,18 +334,20 @@ void cari(){
     }
     else{
         letak (26,24);
-        printf("~ Data Tidak Ditemukan ~");
+        printf("\t\t\t --- Data Tidak Ditemukan ---");
     }
 
     letak (26,25);
-    printf("Tekan Enter Untuk Kembali ke Menu");
+    printf("\t\t\t Tekan Enter Untuk Kembali ke Menu");
     getch();
 }
 
+
 void hapus() {
     char jawab, search[30];
+    Tampilan_Tetap();
     letak(26,13);
-    printf("=== Hapus Data Buku ===");
+    printf(" --- Hapus Data Buku ---");
     letak(26,15);
     printf("Masukkan Nomor ID Buku : ");
     scanf("%d", &oy);
@@ -393,53 +385,21 @@ void hapus() {
         tot--;
     } else {
         letak(26,24);
-        printf("~ Data Tidak Ditemukan ");
+        printf(" --- Data Tidak Ditemukan ---");
     }
     letak(26,25);
-    printf("Tekan Enter Untuk Kembali ke Menu");
+    printf(" Tekan Enter Untuk Kembali ke Menu");
     getch();
 }
 
-    if (result == 1) {
-        letak (26,17);
-        printf("Data buku berikut akan dihapus :");
-        letak (26,19);
-        printf("Tanggal input : %s", dat [x].tanggal);
-        letak (26,20);
-        printf("Judul Buku : %s", dat [x].nama);
-        letak (26,21);
-        printf("Nomor ID Buku : %d", dat [x].id);
-        letak (26,22);
-        printf("Penerbit : %s", dat [x].harga);
-
-        snprintf(temps, sizeof(temps), " ADMIN menghapus data Buku No. %d", dat [x].id);
-        append(&head, temps);
-
-        for (int i = 0; i < tot; i++) {
-            strcpy(dat [x+i].nama, dat [x+1+i].nama);
-            dat [x+i].id = dat [x+1+i].id;
-            strcpy(dat [x+i].telp, dat [x+1+i].telp);
-            strcpy(dat [x+i].tanggal, dat [x+1+i].tanggal);
-            strcpy(dat [x+i].harga, dat [x+1+i].harga);
-        }
-        tot -= 1;
-    }
-    else{
-        letak (26,24);
-        printf("~ Data Tidak Ditemukan ");
-    }
-    letak (26,25);
-    printf("Tekan Enter Untuk Kembali ke Menu"); getch();
-
-}
 
 //14
 void edit() {
     char stemp[30], search[30], temps[100];
     int jaw = 0;
-
+    Tampilan_Tetap();
     letak(26, 13);
-    printf("=== Ubah Data Buku ===");
+    printf(" --- Ubah Data Buku ---");
     letak(26, 15);
     printf("Masukkan Nomor ID Buku: ");
     scanf("%d", &oy);
@@ -533,18 +493,15 @@ void edit() {
         }
     }
 }
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int main()
 {
-    SetColor(10);
-    system("color 8F");
-    getch();
-    fflush(stdin);
-
      int pilihan;
     char a=170,b=219, str[]="54321";;
     printf("\n\n\n\n\n\n\n");
-    printf("\n\n\n\t\t\t\t\tLoading...");
+    printf("\033[1;32m\n\n\n\t\t\t\t\tLoading...\033[0m");
     printf("\n\n");
     printf( "\t\t\t\t\t");
 
@@ -553,38 +510,31 @@ int main()
           printf(">");
         Sleep(100);
     }
-    printf ("\n\n\t\t\t\t\t'PRESS ANY BUTTON TO LOGIN'");
+    printf ("\033[1;32m \n\n\t\t\t\t\t'PRESS ANY BUTTON TO LOGIN' \033[0m");
     system ("pause>0");
-
 
     char nama[10], psw[8];
     int ulang = 0;
     system ("cls");
 
-    for(int i=0; i<3; i++)
+    for(int i=0; i<1; i++)
     {
-        for(int i=0; i<120; i++)
-        {
-            printf("_");sleep(0);
-        }
-        printf("\n\n");
-        for(int i=0; i<46; i++)
-        {
-            printf("=");sleep(1);
-        }
-        printf(" | LOGIN KE TOKO KLONTONG KAMI | ");
-
-        for(int i=0; i<41; i++)
-        {
-            printf("=");sleep(1);
-        }
+        sama();
         printf("\n");
-         for(int i=0; i<120; i++)
+        printf( "\t\t\t");printf("|");
+        for(int i=0; i<7; i++)
         {
-            printf("_");sleep(0);
+            printf(" ");Sleep(1);
         }
+        printf("\033[1;34m     Login ke Toko Klontong KAMI      \033[0m");
+         for(int i=0; i<6; i++)
+        {
+            printf(" ");Sleep(1);
+        } printf("|");printf("\n");
+        printf("\n");
+        sama();
         printf("\n\n");
-     
+
 }
 
    char user[5]="tugas",pass[8]="kematian",word[8],name[5];
@@ -592,12 +542,12 @@ int main()
     p=0;
     salah=0;
     awal:
- 
-    printf("\n\n\n\n\n\n\n\n");
+
+    printf("\n\n\n\n\n");
     printf("\t\t\t\t\t");
-    printf("--SELAMAT DATANG!--\n");
+    printf("\033[1;34m--- SELAMAT DATANG! ---\n\033[0m");
     printf("\n\t\t\t\t\t");
-    printf("USERNAME  : ");
+    printf("USERNAME  :\033[1;32m \033[0m");
     scanf("%s",&name);
     cek=0;
     for(i=0;i<5;i++){
@@ -615,7 +565,7 @@ int main()
             goto cek;
         }else{
             word[i]=input;
-            printf("*");
+            printf("\033[1;32m*\033[0m");
         }
     }
     nilai=0;
@@ -630,24 +580,24 @@ int main()
     cek:
     if(cek==5&&nilai==8){
         printf("\n\n\t\t\t\t  ");
-        printf("Selamat datang di Tugas Kematian");
+        printf("\033[1;32mSelamat datang di Tugas Kematian\033[0m");
         printf("\n\n\t\t\t\t       ");
-        printf("Klik ENTER untuk lanjut");
+        printf("\033[1;32mKlik ENTER untuk lanjut\033[0m");
         getch();
         system("cls");
-        return home();
+        goto muka;
     }else{
         if(cek==5){
             printf("\n\n\t\t\t\t\t   ");
-            printf("Password salah");
+            printf("\033[1;31mPassword salah\033[0m");
             goto bawah;
         }else if(nilai==8){
             printf("\n\n\t\t\t\t\t   ");
-            printf("Username salah");
+            printf("\033[1;31mUsername salah\033[0m");
             goto bawah;
         }else{
             printf("\n\n\t\t\t\t     ");
-            printf("Username dan Password salah");
+            printf("\033[1;31mUsername dan Password salah\033[0m");
             goto bawah;
         }
     }
@@ -655,10 +605,10 @@ int main()
     salah=salah+1;
     if(salah==3){
         printf("\n\n\t\t  ");
-        printf("Anda telah salah menginput username dan password sebanyak 3 kali\n");
-        printf("\n\t\t\t\t\tAnda akan keluar dalam ");
+        printf("\033[1;31mAnda telah salah menginput username dan password sebanyak 3 kali\n\033[0m");
+        printf("\033[1;31m\n\t\t\t\t\tAnda akan keluar dalam \033[0m");
         for( i =1 ; i<= 5; i++ ) {
-            gotoxy(51, 20);
+            letak(51, 20);
             printf("%c", str[p++]);
             Sleep(1000);
             if(p == strlen(str))
@@ -668,80 +618,57 @@ int main()
         return 0;
     }else{
         printf("\n\n\t\t\t\t     ");
-        printf("Klik ENTER untuk mengulangi");
+        printf("\033[1;32mKlik ENTER untuk mengulangi\033[0m");
         printf("\n\n\t\t\t\t  ");
-        printf("Anda memiliki %d kesempatan lagi!",3-salah);
+        printf("\033[1;32mAnda memiliki %d kesempatan lagi!\033[0m",3-salah);
         getch();
         goto awal;
     }
 
-    return 0;
-}
-
-void sama(){
-    for(int h=0; h<100; h++){
-        printf("=");
-    }
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////v-tabel pembuka
-int home(){
-
-    int pilihan;
-    menu:
-//////////////////////////////////////////////////v-garis pembuka
-
-    system("cls");
-    letak(8, 0);
-    sama();
-    letak(8, 2);
-    printf("|===                                 SELAMAT DATANG DALAM PROGRAM                               ===|\n");
-    letak(8, 4);
-    sama();
-    letak(8, 6);
-    printf("|===                                    DATABASE KELOMPOK KAMI                                  ===|\n\n");
-    letak(8, 8);
-    sama();
-    letak(8, 9);
-    printf("|===                                   SILAHKAN MEMBUAT PESANAN                                 ===|\n");
-    letak(8, 10);
-    sama();
-
+    muka:
 
         do {
-        letak (8,12);
-        printf("= Menu Utama =");
-        letak (9,13);
+        system ("cls");
+        Tampilan_Tetap();
+        letak (26,13);
         printf("1. Tambah Data Buku");
-        letak (9, 14);
+        letak (26,14);
         printf("2. Lihat Data Buku");
-        letak (9,15);
+        letak (26,15);
         printf("3. Urutkan Data Buku");
-        letak (9,16);
+        letak (26,16);
         printf("4. Pencarian Data Buku");
-        letak (9, 17);
+        letak (26,17);
         printf("5. Hapus Data Buku");
-        letak(9,18);
+        letak (26,18);
         printf("6. Ubah Data Buku");
-        letak (9, 19);
+        letak (26,19);
         printf("7. Exit");
-        letak (8,21);
-        printf("= Masukkan Pilihan Anda : "); scanf("%d", &pilihan);
-        system("cls");
-
+        letak (26,21);
+        printf("\033[1;32mMasukkan Pilihan Anda : \033[0m"); scanf("%d", &pilihan);
 
         switch(pilihan) {
-            case 1: tambah(); break;
-            case 2: lihat(); break;
-            case 3: urut(); break;
-            case 4: cari(); break;
-            case 5: hapus(); break;
-            case 6: edit(); break;
+            case 1: system ("cls");
+                    tambah();
+                    break;
+            case 2: system ("cls");
+                    lihat();
+                    break;
+            case 3: system ("cls");
+                    urut();
+                    break;
+            case 4: system ("cls");
+                    cari();
+                    break;
+            case 5: system ("cls");
+                    hapus();
+                    break;
+            case 6: system ("cls");
+                    edit();
+                    break;
             case 7: return 0;
             default: letak(6,21); printf("Pilihan Tidak Tersedia");getch();
         }
     } while(pilihan != 7);
 
-    return 0;
 }
