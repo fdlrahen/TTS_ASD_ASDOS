@@ -565,22 +565,34 @@ int main()
     {
         for(int i=0; i<120; i++)
         {
-            printf("_");Sleep(10);
+            printf("_");sleep(0);
         }
         printf("\n\n");
         for(int i=0; i<46; i++)
         {
-            printf("=");Sleep(10);
+            printf("=");sleep(1);
         }
         printf(" | LOGIN KE TOKO KLONTONG KAMI | ");
-    }
+
+        for(int i=0; i<41; i++)
+        {
+            printf("=");sleep(1);
+        }
+        printf("\n");
+         for(int i=0; i<120; i++)
+        {
+            printf("_");sleep(0);
+        }
+        printf("\n\n");
+     
+}
 
    char user[5]="tugas",pass[8]="kematian",word[8],name[5];
     int i,j,k,l,p,input,cek,nilai,salah;
     p=0;
     salah=0;
     awal:
-    system("cls");
+ 
     printf("\n\n\n\n\n\n\n\n");
     printf("\t\t\t\t\t");
     printf("--SELAMAT DATANG!--\n");
